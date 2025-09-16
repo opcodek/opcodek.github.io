@@ -5,44 +5,43 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>opcodek</title>
 <style>
-:root{--bg:#0b0f12;--text:#c6f1ff;--accent:#39ff14;--muted:#5b6b72}
+:root{--bg:#0b0f12;--text:#39ff14;--muted:#5b6b72}
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;background:linear-gradient(180deg,#020406 0%,var(--bg) 100%);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Roboto Mono,monospace;color:var(--text);display:flex;align-items:center;justify-content:center}
-.terminal{width:880px;max-width:96%;height:600px;background:rgba(3,6,8,0.6);border-radius:8px;box-shadow:0 10px 40px rgba(2,6,8,0.7);border:1px solid rgba(255,255,255,0.03);overflow:hidden;display:flex;flex-direction:column}
-.header{display:flex;align-items:center;padding:12px 14px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);border-bottom:1px solid rgba(255,255,255,0.02)}
-.dots{display:flex;gap:8px}
-.dot{width:12px;height:12px;border-radius:50%}
+body{margin:0;background:#000;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Roboto Mono,monospace;color:var(--text);display:flex;align-items:center;justify-content:center}
+.terminal{width:880px;max-width:96%;height:600px;background:#000;border-radius:8px;box-shadow:0 10px 40px rgba(0,0,0,0.7);border:1px solid rgba(255,255,255,0.05);overflow:hidden;display:flex;flex-direction:column}
+.header{display:flex;align-items:center;padding:8px 12px;background:#111;border-bottom:1px solid #222;font-size:14px;color:var(--muted)}
+.dots{display:flex;gap:6px;margin-right:10px}
+.dot{width:10px;height:10px;border-radius:50%}
 .dot.red{background:#ff5f56}
 .dot.yellow{background:#ffbd2e}
 .dot.green{background:#27c93f}
-.title{margin-left:14px;font-weight:700;letter-spacing:0.6px}
+.title{font-weight:400}
 .body{display:flex;flex:1}
-.sidebar{width:220px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);padding:18px;border-right:1px solid rgba(255,255,255,0.02);display:flex;flex-direction:column;align-items:center}
-.logo{width:128px;height:128px;border-radius:6px;background:#0f1620;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.sidebar{width:200px;background:#0a0a0a;padding:12px;border-right:1px solid #111;display:flex;flex-direction:column;align-items:center}
+.logo{width:96px;height:96px;border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
 .logo img{width:100%;height:100%;object-fit:cover}
-.name{margin-top:12px;font-weight:700}
-.role{color:var(--muted);font-size:13px;margin-top:6px;text-align:center}
-.menu{margin-top:18px;display:flex;flex-direction:column;gap:8px;width:100%}
-.menu button{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;color:var(--text);text-align:left;cursor:pointer;font-family:inherit;width:100%}
-.menu button.active{border-color:var(--accent);color:var(--accent)}
-.menu button:hover{border-color:rgba(255,255,255,0.06)}
-.console{flex:1;padding:18px;display:flex;flex-direction:column}
-.output{flex:1;overflow:auto;padding-right:8px;line-height:1.45;white-space:pre-wrap}
-.footer{padding:8px 12px;font-size:12px;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between}
-.link{color:var(--accent);text-decoration:none}
-.tag{display:inline-block;padding:4px 8px;border-radius:999px;background:rgba(57,255,20,0.06);color:var(--accent);font-size:12px;margin-right:6px}
+.name{font-weight:700;margin-bottom:4px;text-transform:lowercase}
+.role{color:var(--muted);font-size:12px;margin-bottom:10px;text-align:center;text-transform:lowercase}
+.menu{display:flex;flex-direction:column;gap:6px;width:100%}
+.menu button{background:transparent;border:0;padding:6px 8px;color:var(--text);text-align:left;cursor:pointer;font-family:inherit;width:100%;font-size:13px;text-transform:lowercase}
+.menu button.active{background:#111;color:var(--text)}
+.console{flex:1;padding:14px;display:flex;flex-direction:column;font-size:13px;line-height:1.4;white-space:pre-wrap}
+.output{flex:1;overflow:auto;padding-right:6px}
+.footer{padding:6px 10px;font-size:11px;color:var(--muted);border-top:1px solid #111;display:flex;justify-content:space-between;text-transform:lowercase}
+.link{color:var(--text);text-decoration:none}
+.separator{color:var(--muted)}
 @media(max-width:640px){.sidebar{display:none}.terminal{height:88vh}}
 </style>
 </head>
 <body>
-<div class="terminal" role="application" aria-label="Terminal portfolio">
-<div class="header"><div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div><div class="title">opcodek@portfolio: ~</div></div>
+<div class="terminal" role="application" aria-label="terminal portfolio">
+<div class="header"><div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div><div class="title">opcodek@portfolio:~</div></div>
 <div class="body">
 <div class="sidebar">
 <div class="logo"><img src="https://cdn.discordapp.com/avatars/1405871853389480037/dd0d1eaf74abe006e799b0a763d314cb.webp?size=128" alt="pfp"></div>
 <div class="name">opcodek</div>
-<div class="role">Software developer   Reverse Engineer</div>
+<div class="role">software developer · reverse engineer</div>
 <div class="menu">
 <button data-tab="about" class="active">about</button>
 <button data-tab="skills">skills</button>
@@ -53,16 +52,36 @@ body{margin:0;background:linear-gradient(180deg,#020406 0%,var(--bg) 100%);font-
 <div id="output" class="output"></div>
 </div>
 </div>
-<div class="footer"><div id="status">my bio page lol</div><div>github: <a class="link" href="https://github.com/opcodek" target="_blank">opcodek</a></div></div>
+<div class="footer"><div id="status">bio page</div><div>github: <a class="link" href="https://github.com/opcodek" target="_blank">opcodek</a></div></div>
 </div>
 <script>
 const output=document.getElementById('output')
 const tabs={
-about:["opcodek","I make cheats for games","Location: Dorset, UK","Open to remote work"].join('\n'),
-skills:["Languages: C++, C#, Python, JavaScript, Lua, Zig, Html, CSS, Js, Luau", "Interests: Systems, tooling, runtime hacking"].join('\n'),
+about:[
+"==============================",
+"about",
+"==============================",
+"name: opcodek",
+"what i do: i make cheats for games",
+"location: dorset, uk",
+"work: open to remote",
+"=============================="
+].join('\n'),
+skills:[
+"==============================",
+"skills",
+"==============================",
+"languages: c++, c#, python, javascript, lua, zig, html, css, js, luau",
+"interests: systems, tooling, runtime hacking",
+"=============================="
+].join('\n'),
 projects:[
-"UMBREON.SYSTEMS - Undetected Roblox execution tool",
-"DOMAIN - External Roblox execution tool"
+"==============================",
+"projects",
+"==============================",
+"umbreon.systems - undetected roblox execution tool",
+"domain - external roblox execution tool",
+"=============================="
 ].join('\n')
 }
 function showTab(tab){
