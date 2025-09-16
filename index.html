@@ -1,87 +1,77 @@
-<!DOCTYPE html>
-<html lang="en" class="antialiased">
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>opcodek</title>
-<script src="https://cdn.tailwindcss.com"></script>
 <style>
-*{text-transform:lowercase}
-html,body{height:100%;margin:0;overflow:hidden}
-.snow{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.flake{position:absolute;border-radius:50%;background:rgba(0,0,0,0.1);animation:fall linear forwards}
-@keyframes fall{
-  0%{transform:translateY(-10vh) translateX(0);opacity:0}
-  10%{opacity:1}
-  50%{transform:translateY(50vh) translateX(15px)}
-  100%{transform:translateY(110vh) translateX(-15px);opacity:0}
-}
-.ground{position:fixed;bottom:0;left:0;width:100%;height:0;background:linear-gradient(to top,rgba(0,0,0,0.08),transparent);z-index:1;transition:height 1s linear}
-@keyframes fadeInUp{
-  0%{opacity:0;transform:translateY(40px)}
-  100%{opacity:1;transform:translateY(0)}
-}
-.card-animate{animation:fadeInUp 1.5s ease-out forwards}
+:root{--bg:#0b0f12;--text:#c6f1ff;--accent:#39ff14;--muted:#5b6b72}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:linear-gradient(180deg,#020406 0%,var(--bg) 100%);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Roboto Mono,monospace;color:var(--text);display:flex;align-items:center;justify-content:center}
+.terminal{width:880px;max-width:96%;height:600px;background:rgba(3,6,8,0.6);border-radius:8px;box-shadow:0 10px 40px rgba(2,6,8,0.7);border:1px solid rgba(255,255,255,0.03);overflow:hidden;display:flex;flex-direction:column}
+.header{display:flex;align-items:center;padding:12px 14px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);border-bottom:1px solid rgba(255,255,255,0.02)}
+.dots{display:flex;gap:8px}
+.dot{width:12px;height:12px;border-radius:50%}
+.dot.red{background:#ff5f56}
+.dot.yellow{background:#ffbd2e}
+.dot.green{background:#27c93f}
+.title{margin-left:14px;font-weight:700;letter-spacing:0.6px}
+.body{display:flex;flex:1}
+.sidebar{width:220px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);padding:18px;border-right:1px solid rgba(255,255,255,0.02);display:flex;flex-direction:column;align-items:center}
+.logo{width:128px;height:128px;border-radius:6px;background:#0f1620;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.logo img{width:100%;height:100%;object-fit:cover}
+.name{margin-top:12px;font-weight:700}
+.role{color:var(--muted);font-size:13px;margin-top:6px;text-align:center}
+.menu{margin-top:18px;display:flex;flex-direction:column;gap:8px;width:100%}
+.menu button{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;color:var(--text);text-align:left;cursor:pointer;font-family:inherit;width:100%}
+.menu button.active{border-color:var(--accent);color:var(--accent)}
+.menu button:hover{border-color:rgba(255,255,255,0.06)}
+.console{flex:1;padding:18px;display:flex;flex-direction:column}
+.output{flex:1;overflow:auto;padding-right:8px;line-height:1.45;white-space:pre-wrap}
+.footer{padding:8px 12px;font-size:12px;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between}
+.link{color:var(--accent);text-decoration:none}
+.tag{display:inline-block;padding:4px 8px;border-radius:999px;background:rgba(57,255,20,0.06);color:var(--accent);font-size:12px;margin-right:6px}
+@media(max-width:640px){.sidebar{display:none}.terminal{height:88vh}}
 </style>
 </head>
-<body class="min-h-screen bg-white text-black font-mono flex items-center justify-center">
-<div id="intro" class="fixed inset-0 bg-white flex flex-col items-center justify-center z-50">
-  <p class="text-gray-500">click to enter</p>
-</div>
-<div class="snow" id="snow"></div>
-<div id="ground" class="ground"></div>
-<div id="content" class="hidden relative z-10 w-80 bg-white/60 backdrop-blur-lg rounded-2xl border border-black/6 shadow-lg p-6 text-center card-animate">
-<div class="w-40 h-40 mx-auto -mt-24 mb-4 rounded-xl border border-black/10 overflow-hidden shadow">
-<img src="https://i.pinimg.com/1200x/ea/b4/3e/eab43e5eb822441a731c59e840befc51.jpg" alt="pfp" class="w-full h-full object-cover">
-</div>
-<h1 class="text-2xl font-light tracking-wide">opcodek</h1>
-<div class="mt-4 text-sm text-black/60 leading-relaxed">
-  <div>he/him</div>
-  <div class="flex items-start justify-center gap-6 mt-1">
-    <span>femboy</span>
-    <span>15</span>
-    <span>uk</span>
-    <span>english</span>
-  </div>
+<body>
+<div class="terminal" role="application" aria-label="Terminal portfolio">
+<div class="header"><div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div><div class="title">opcodek@portfolio: ~</div></div>
+<div class="body">
+<div class="sidebar">
+<div class="logo"><img src="https://cdn.discordapp.com/avatars/1405871853389480037/dd0d1eaf74abe006e799b0a763d314cb.webp?size=128" alt="pfp"></div>
+<div class="name">opcodek</div>
+<div class="role">Software developer · Reverse Engineer</div>
+<div class="menu">
+<button data-tab="about" class="active">about</button>
+<button data-tab="skills">skills</button>
+<button data-tab="projects">projects</button>
 </div>
 </div>
-<audio id="wind" loop>
-  <source src="https://github.com/opcodek/opcodek/raw/refs/heads/main/winter-wind-whistling-through-window-7179.mp3" type="audio/mpeg">
-</audio>
+<div class="console">
+<div id="output" class="output"></div>
+</div>
+</div>
+<div class="footer"><div id="status">my bio page lol</div><div>github: <a class="link" href="https://github.com/opcodek" target="_blank">opcodek</a></div></div>
+</div>
 <script>
-const snow = document.getElementById('snow');
-const ground = document.getElementById('ground');
-let groundHeight = 0;
-
-function createFlake(){
-  const flake = document.createElement('div');
-  flake.className = 'flake';
-  const size = 2 + Math.random() * 4;
-  flake.style.width = size + 'px';
-  flake.style.height = size + 'px';
-  flake.style.left = Math.random() * 100 + 'vw';
-  flake.style.top = '-10px';
-  const duration = 5 + Math.random() * 7;
-  flake.style.animationDuration = duration + 's';
-  snow.appendChild(flake);
-  setTimeout(()=>{
-    flake.remove();
-    groundHeight = Math.min(window.innerHeight * 0.5, groundHeight + size*0.2);
-    ground.style.height = groundHeight + 'px';
-  }, duration*1000);
+const output=document.getElementById('output')
+const tabs={
+about:["opcodek","I make cheats for games","Location: Dorset, UK","Open to remote work"].join('\n'),
+skills:["Languages: C++, C#, Python, JavaScript, Lua, Zig, Html, CSS, Js, Luau", "Interests: Systems, tooling, runtime hacking"].join('\n'),
+projects:[
+"UMBREON.SYSTEMS - Undetected Roblox execution tool",
+"DOMAIN - External Roblox execution tool"
+].join('\n')
 }
-
-let snowInterval;
-const intro = document.getElementById('intro');
-const content = document.getElementById('content');
-const wind = document.getElementById('wind');
-
-intro.addEventListener('click', ()=>{
-  intro.classList.add('hidden');
-  content.classList.remove('hidden');
-  wind.play();
-  snowInterval = setInterval(createFlake, 200);
-});
+function showTab(tab){
+output.innerText=tabs[tab]||''
+document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active'))
+document.querySelector(`.menu button[data-tab="${tab}"]`).classList.add('active')
+}
+document.querySelectorAll('.menu button').forEach(b=>b.addEventListener('click',()=>{showTab(b.dataset.tab)}))
+showTab('about')
 </script>
 </body>
 </html>
