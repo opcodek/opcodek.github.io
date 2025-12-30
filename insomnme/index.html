@@ -51,6 +51,14 @@
       mix-blend-mode: overlay;
       opacity: 0.35;
       z-index: 999;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: var(--text);
+      font-family: 'VT323', monospace;
+      letter-spacing: 0.5px;
+      overflow-x: hidden;
     }
 
     header {
@@ -165,6 +173,7 @@
       border-top: 1px solid var(--line-dim);
       font-size: 14px;
       opacity: 0.7;
+      box-shadow: 0 -8px 24px rgba(127,140,255,0.08);
     }
 
     .blink {
